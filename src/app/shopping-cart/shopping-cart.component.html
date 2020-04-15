@@ -1,0 +1,37 @@
+<div class="form-group" [hidden] = "logIn"> 
+    <h4>Bienvenido, por favor ingrese su correo electronico</h4>
+      <div class="form-group"> 
+        <label for="exampleInputEmail1">Correo Electronico</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Correo Electronico" #email>
+      </div>
+      <button class="btn btn-primary" (click)="validaEmail()">Enviar</button>
+    </div>
+    
+      <div>
+          <div style="float:left;">
+              <div class="container" *ngIf = "logIn" >
+                  <h6>Articulos a la Venta</h6>
+                        <h6>Seleccione los articulos que desea comprar</h6>
+                  <li *ngFor="let articule of articlesToSell">
+                    <div>
+                        {{articule.name}} {{articule.price}} <button href="#" class="btn btn-xs btn-success" (click)="addToCartShopping(articule)" [disabled]= articule.add>Agregar</button>
+                   </div> 
+                  </li>
+                </div>
+          </div>
+          <div style="float:right;">
+              <div class="container" *ngIf = "logIn" >
+                    <h6>Hola {{email.value}}</h6>
+                        <h6>Carrito de Compras</h6>
+                  <li *ngFor="let articule of shoppingCartList; let i = index">
+                      <div [hidden] = "showShoppingCart" >
+                          {{articule.name}} {{articule.price}} <button href="#" class="btn btn-xs btn-danger" (click)="removeItemCartShopping(i, articule)">Eliminar</button>
+                     </div> 
+                  </li>
+                </div>
+          </div>
+          </div>
+    
+    
+    
+    
